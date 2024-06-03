@@ -53,6 +53,13 @@ def rsa_decrypt(encrypted_data, private_key):
     encrypted_data = base64.b64decode(encrypted_data)
     decrypted = cipher_rsa.decrypt(encrypted_data)
     return decrypted.decode()
+
+
+private_key, public_key = generate_rsa_keys()
+print("Private Key:\n", private_key)
+print("Public Key:\n", public_key)
+
+
 from flask import Flask, request, render_template_string
 from pyngrok import ngrok
 from Crypto.Cipher import AES, PKCS1_OAEP
@@ -167,7 +174,3 @@ print(" * ngrok URL:", public_url)
 
 if __name__ == '__main__':
     app.run()
-
-private_key, public_key = generate_rsa_keys()
-print("Private Key:\n", private_key)
-print("Public Key:\n", public_key)
